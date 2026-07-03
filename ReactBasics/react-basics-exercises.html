@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics Exercises</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="react-basics.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      //ex 1a 
+      const div1a = (
+        <div>
+          <button>Good job!</button>
+        </div>
+      );
+      
+      //ex 1b
+      const div1b = (
+        <div>
+          <p>My name is Poro</p>
+        </div>
+      );
+
+      //ex 1c
+      const div1c = (
+        <div>
+          <p>Cotton socks</p>
+          <p>Price: $10</p>
+          <button>Add to Cart</button>
+        </div>
+      );
+
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(div1c);
+    </script>
+  </body>
+</html>
