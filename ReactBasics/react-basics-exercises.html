@@ -8,6 +8,8 @@
 
     <script src="react-basics.js"></script>
 
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
@@ -37,9 +39,48 @@
         </div>
       );
 
+      //ex 1d
+      const productCost = 10 + 2*8;
+      console.log(productCost);
 
+      //ex 1e
+      const productCostDisplay = <p>Product Cost: ${productCost}</p>;
+
+      //ex 1f
+      const shippingCost = 5;
+      const totalCost = productCost + shippingCost;
+      const div1f = (
+        <div>
+          <p>Product Cost: ${productCost}</p>
+          <p>Shipping Cost: ${shippingCost}</p>
+          <p>Total Cost: ${totalCost}</p>
+          <button>Place your order</button>
+        </div>
+      );
+    
+      //ex 1g
+      const today = dayjs().format('DD/MM/YYYY');
+      console.log(today);
+
+      //ex 1h
+      const todayDisplay = <p>Today is {today}</p>;
+
+      //ex 1i
+      const now = dayjs().format('HH:mm:ss');
+      const nowDisplay = <p>Current time is {now}</p>;
+
+      //ex 1j
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(div1c);
+      const root = ReactDOM.createRoot(container); 
+      const nowf = dayjs().format('HH:mm:ss');
+      const nowDisplayf = <p>Current time is {nowf}</p>;
+
+      root.render(nowDisplayf);
+      setInterval(() => {
+        const now = dayjs().format('HH:mm:ss');
+        const nowDisplayf = <p>Current time is {now}</p>;
+        root.render(nowDisplayf);
+      }, 1000);
     </script>
   </body>
 </html>
