@@ -13,6 +13,12 @@
     <script type="text/babel">
       const productCost = 10 + 2*8;
       console.log(productCost);
+
+      const paragraph = <p>Product Cost: ${productCost}</p>;
+      
+      const root = ReactDOM.createRoot(document.querySelector('.js-container'));
+      root.render(paragraph);
+
     </script>
   </body>
 </html>
