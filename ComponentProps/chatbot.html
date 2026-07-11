@@ -22,9 +22,27 @@
         );
       }
       
+      function ChatMessage(props) {
+        console.log(props)
+        const message = props.message;
+        const source_icon = props.src;
+        return(
+          <div>
+            {message}
+            <img src={source_icon} width="50"/>
+          </div>
+        );
+      }
+
       const app = (
         <>
           <ChatInput/>
+          <ChatMessage message="Hello Chatbot" src="user.png"/>
+          <ChatMessage message="Hello! How can I help you" src="robot.png"/>
+          <ChatMessage message="Can you get me todays date?" src="user.png"/>
+          <ChatMessage message="Today is July 11" src="robot.png"/>
+          <ChatMessage message="How about flip a coin" src="user.png"/>
+          <ChatMessage message="Sure! You got heads" src="robot.png"/>
         </>
       );
 
