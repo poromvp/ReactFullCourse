@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lession 2 - I</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script src="react-basics.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        function ProductDetails({ name, price, discount, images }) {
+            return (
+                <div>
+                    <img src={images} width="50" />
+                    <p>{name}</p>
+                    {!discount ? (<p>Price: ${price}</p>) : (
+                        <>
+                            <p>Price: <del>${price}</del></p>
+                            <p>Discount price: ${discount}</p>
+                        </>
+                    )}
+                    <button>Add to Cart</button>
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <>
+                    <ProductDetails
+                        name="Cotton socks"
+                        price="10"
+                        discount="5"
+                        images="cotton-socks.png"
+                    />
+
+                    <ProductDetails
+                        name="Tennis Balls"
+                        price="100"
+                        images="tennis-balls.png"
+                    />
+
+                    <ProductDetails
+                        name="Plain T-Shirt"
+                        price="100"
+                        discount="50"
+                        images="plain-t-shirt.png"
+                    />
+                </>
+            );
+        }
+
+        const container = document.querySelector(".js-container");
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
