@@ -43,49 +43,45 @@
     }
 
     function ChatMessages() {
-
-      const chatMessage = [{
-        message: 'Hello Chatbot',
-        sender: 'user',
-        id: 'id1'
-      }, {
-        message: 'Hello! How can I help you',
-        sender: 'robot',
-        id: 'id2'
-      }, {
-        message: 'Can you get me todays date?',
-        sender: 'user',
-        id: 'id3'
-      }, {
-        message: 'Today is July 11',
-        sender: 'robot',
-        id: 'id4'
-      }, {
-        message: 'How about flip a coin',
-        sender: 'user',
-        id: 'id5'
-      }, {
-        message: 'Sure! You got heads',
-        sender: 'robot',
-        id: 'id6'
-      }];
-
-      /*const chatMessageComponents = chatMessage.map((chatMessage) => {
-        return (
-          <ChatMessage
-            message={chatMessage.message}
-            sender={chatMessage.sender}
-          />
-        );
-      });*/
+      const array = React.useState(
+        [{
+          message: 'Hello Chatbot',
+          sender: 'user',
+          id: 'id1'
+        }, {
+          message: 'Hello! How can I help you',
+          sender: 'robot',
+          id: 'id2'
+        }, {
+          message: 'Can you get me todays date?',
+          sender: 'user',
+          id: 'id3'
+        }, {
+          message: 'Today is July 11',
+          sender: 'robot',
+          id: 'id4'
+        }, {
+          message: 'How about flip a coin',
+          sender: 'user',
+          id: 'id5'
+        }, {
+          message: 'Sure! You got heads',
+          sender: 'robot',
+          id: 'id6'
+        }]
+      );
+      const chatMessage = array[0];
+      const setChatMessage = array[1];
 
       function sendMessage() {
-        chatMessage.push({
-          message: 'test',
-          sender: 'user',
-          id: crypto.randomUUID()
-        });
-        console.log(chatMessage);
+        setChatMessage([
+          ...chatMessage,
+          {
+            message: 'test',
+            sender: 'user',
+            id: crypto.randomUUID()
+          }
+        ]);
       }
 
       return (
