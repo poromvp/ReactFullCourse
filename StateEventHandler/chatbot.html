@@ -79,8 +79,19 @@
         );
       });*/
 
+      function sendMessage() {
+        chatMessage.push({
+          message: 'test',
+          sender: 'user',
+          id: crypto.randomUUID()
+        });
+        console.log(chatMessage);
+      }
+
       return (
         <>
+          <button onClick={sendMessage}>Send message</button>
+
           {
             chatMessage.map((chatMessage) => {
               return (
@@ -102,7 +113,7 @@
       return (
         <>
           <ChatInput />
-          <ChatMessages/>
+          <ChatMessages />
         </>
       );
     }
