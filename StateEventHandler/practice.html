@@ -17,9 +17,14 @@
     <script type="text/babel">
 
         function ChatInput() {
+            function saveInputText(event){
+                console.log(event.target.value);
+            }
+
             return (
                 <>
-                    <input placeholder="Send message to ChatBot" />
+                    <input placeholder="Send message to ChatBot"
+                    onChange={saveInputText}/>
                     <button>Send</button>
                 </>
             );
