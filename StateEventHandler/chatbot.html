@@ -13,6 +13,8 @@
   <script src="https://unpkg.com/supersimpledev/react.js"></script>
   <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
+  <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
   <script src="https://unpkg.com/supersimpledev/babel.js"></script>
   <script type="text/babel">
     function ChatInput({chatMessage, setChatMessage}) {
@@ -23,15 +25,26 @@
       }
 
       function sendMessage(){
-        setChatMessage([
+        const newChatMessages = [
           ...chatMessage,
           {
             message: inputText,
             sender: 'user',
             id: crypto.randomUUID()
           }
-        ]);
+        ];
+        setChatMessage(newChatMessages);
 
+        const response = Chatbot.getResponse(inputText);
+        setChatMessage([
+          ...newChatMessages,
+          {
+            message: response,
+            sender: 'robot',
+            id: crypto.randomUUID()
+          }
+        ]);
+        
         setInputText('')
       }
       return (
