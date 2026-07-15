@@ -16,19 +16,38 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-        function ChatInput() {
+        function ChatInput({ arr, setMessage }) {
             const [inputText, setInputText] = React.useState('');
-            
-            function saveInputText(event){
-                console.log(event.target.value);
+
+            function saveInputText(event) {
+                setInputText(event.target.value);
             }
-            
+
+            function sendMessage() {
+                setMessage(
+                    [
+                        ...arr,
+                        {
+                            message: inputText,
+                            sender: "user",
+                            id: crypto.randomUUID()
+                        }
+                    ]
+                );
+
+                setInputText('');
+            }
 
             return (
                 <>
-                    <input placeholder="Send message to ChatBot"
-                    onChange={saveInputText}/>
-                    <button>Send</button>
+                    <input
+                        placeholder="Send message to ChatBot"
+                        onChange={saveInputText}
+                        value={inputText}
+                    />
+                    <button
+                        onClick={sendMessage}
+                    >Send</button>
                 </>
             );
         }
@@ -43,39 +62,9 @@
             );
         }
 
-        function ChatMessages() {
-            const [arr, setMessage] = React.useState(
-                [
-                    {
-                        message: "Hello",
-                        sender: "user",
-                        id: "id1"
-                    },
-                    {
-                        message: "Hi! How can I help you?",
-                        sender: "robot",
-                        id: "id2"
-                    }
-                ]
-            );
-
-
-            function sendMessage() {
-                setMessage(
-                    [
-                        ...arr,
-                        {
-                            message: "test",
-                            sender: "user",
-                            key: crypto.randomUUID()
-                        }
-                    ]
-                );
-            }
-
+        function ChatMessages({ arr }) {
             return (
                 <>
-                    <button onClick={sendMessage}>Send message</button>
                     {arr.map((object) => {
                         return (
                             <ChatMessage
@@ -91,10 +80,30 @@
         }
 
         function App() {
+            const [arr, setMessage] = React.useState(
+                [
+                    {
+                        message: "Hello",
+                        sender: "user",
+                        id: "id1"
+                    },
+                    {
+                        message: "Hi! How can I help you?",
+                        sender: "robot",
+                        id: "id2"
+                    }
+                ]
+            );
+
             return (
                 <>
-                    <ChatInput />
-                    <ChatMessages />
+                    <ChatInput
+                        arr={arr}
+                        setMessage={setMessage}
+                    />
+                    <ChatMessages
+                        arr={arr}
+                    />
                 </>
             );
         }
