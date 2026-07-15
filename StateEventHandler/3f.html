@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lession 3 - F</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script src="react-basics.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        function Counter({count, setCount}) {
+
+
+            function clicked() {
+                setCount(count + 1);
+            }
+
+
+
+            console.log(count);
+            return (
+                <>
+                    {count === 1 ?
+                        <button onClick={clicked}>Clicked {count} time</button>
+                        :
+                        <button onClick={clicked}>Clicked {count} times</button>
+                    }
+                </>
+
+            );
+        }
+
+        function App() {
+            const [count, setCount] = React.useState(0);
+
+            function reset(){
+                setCount(0);
+            }
+
+            return (
+                <>
+                    <Counter
+                        count={count}
+                        setCount={setCount}
+                    />
+                    <Counter
+                        count={count}
+                        setCount={setCount}
+                    />
+                    <button
+                    onClick={reset}
+                    >Reset</button>
+                </>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.querySelector(".js-container")).render(<App />);
+
+    </script>
+</body>
+
+</html>
