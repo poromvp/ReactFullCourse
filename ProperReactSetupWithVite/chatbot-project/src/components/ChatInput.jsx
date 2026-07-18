@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Chatbot } from 'supersimpledev';
 
 import LoadingSpinnerImage from '../assets/loading-spinner.gif';
+import './ChatInput.css';
 
 export function ChatInput({ chatMessage, setChatMessage }) {
   const [inputText, setInputText] = useState('');
