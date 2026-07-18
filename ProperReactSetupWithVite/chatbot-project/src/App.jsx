@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Chatbot} from 'supersimpledev';
+import { Chatbot } from 'supersimpledev';
 import './App.css'
 
 function ChatInput({ chatMessage, setChatMessage }) {
