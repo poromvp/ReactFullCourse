@@ -8,16 +8,25 @@ import ChatMessages from './components/ChatMessages'
 import './App.css'
 
 function App() {
-  const [chatMessage, setChatMessage] = useState([]);
+  const [chatMessage, setChatMessage] = useState(JSON.parse(localStorage.getItem('message')) || [{
+    message: 'hello chatbot',
+    sender: 'user',
+    id: 'id1'
+  }], []);
 
-  useEffect(()=>{
+  useEffect(() => {
     Chatbot.addResponses({
-      'goodbye' : 'Goodbye. Have a great day!',
+      'goodbye': 'Goodbye. Have a great day!',
       'shhh': 'im doi nguoi anh thuonggg',
-      'give me a random ID' : function () { return `Sure! Here: ${crypto.randomUUID()}`;}
+      'give me a random ID': function () { return `Sure! Here: ${crypto.randomUUID()}`; }
     });
-  },[]);
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem('message', JSON.stringify(chatMessage))
+  }, [chatMessage]);
+
+  function
   return (
     <div className="app-container">
       {chatMessage.length === 0 && <p className="j">Welcome to the chatbot project! Send a message using the textbox below.</p>}
@@ -28,6 +37,10 @@ function App() {
         chatMessage={chatMessage}
         setChatMessage={setChatMessage}
       />
+      <button
+        className='clear-button'
+        onClick={clearClick}
+      >Clear</button>
     </div>
   );
 }
