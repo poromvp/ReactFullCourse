@@ -25,8 +25,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem('message', JSON.stringify(chatMessage))
   }, [chatMessage]);
-
-  function
   return (
     <div className="app-container">
       {chatMessage.length === 0 && <p className="j">Welcome to the chatbot project! Send a message using the textbox below.</p>}
@@ -37,10 +35,6 @@ function App() {
         chatMessage={chatMessage}
         setChatMessage={setChatMessage}
       />
-      <button
-        className='clear-button'
-        onClick={clearClick}
-      >Clear</button>
     </div>
   );
 }
