@@ -1,5 +1,4 @@
-import { CheckoutHeader } from '../components/CheckoutHeader';
-
+import { CheckoutHeader } from '../../components/CheckoutHeader';
 import './CheckoutPage.css';
 
 export function CheckoutPage() {
