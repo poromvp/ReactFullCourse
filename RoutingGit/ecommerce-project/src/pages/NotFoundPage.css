@@ -1,0 +1,140 @@
+/* PageNotFound.css */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #2b1055 0%, #060214 100%);
+  color: #ffffff;
+  font-family: 'Quicksand', sans-serif;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.not-found-content {
+  text-align: center;
+  z-index: 10;
+  padding: 0 20px;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.not-found-title {
+  font-size: 8rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #ff00cc, #333399, #00d2ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+.not-found-subtitle {
+  font-size: 2rem;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.not-found-text {
+  font-size: 1.1rem;
+  color: #b3b3b3;
+  max-width: 450px;
+  margin: 0 auto 35px auto;
+  line-height: 1.6;
+}
+
+.not-found-button {
+  display: inline-block;
+  padding: 12px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(45deg, #ff00cc, #333399);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 0, 204, 0.4);
+}
+
+.not-found-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 0, 204, 0.6);
+}
+
+.astronaut-illustration {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.astronaut {
+  font-size: 5rem;
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  animation: drift 15s infinite linear alternate, float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.planet {
+  font-size: 15rem;
+  position: absolute;
+  bottom: -5%;
+  left: -5%;
+  opacity: 0.15;
+  animation: spin 100s infinite linear;
+}
+
+/* Animations */
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes drift {
+  0% { right: 10%; top: 10%; }
+  100% { right: 25%; top: 25%; rotate: 20deg; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .not-found-title {
+    font-size: 6rem;
+  }
+  .not-found-subtitle {
+    font-size: 1.5rem;
+  }
+  .not-found-content {
+    padding: 30px 20px;
+  }
+  .astronaut {
+    font-size: 3.5rem;
+  }
+  .planet {
+    font-size: 10rem;
+  }
+}
