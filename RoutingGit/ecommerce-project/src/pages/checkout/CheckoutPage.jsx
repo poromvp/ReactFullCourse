@@ -1,10 +1,11 @@
-import { CheckoutHeader } from '../../components/CheckoutHeader';
+import { CheckoutHeader } from './CheckoutHeader';
 import './CheckoutPage.css';
 
 export function CheckoutPage() {
     return (
         <>
             <title>Checkout</title>
+            <link rel="icon" type="image/svg+xml" href="/cart-favicon.png" />
 
             <CheckoutHeader/>
 
