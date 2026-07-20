@@ -1,5 +1,5 @@
 import { Header } from "../components/Header";
-
+import { Link } from "react-router";
 import './Tracking.css';
 
 export function Tracking() {
@@ -13,9 +13,9 @@ export function Tracking() {
 
             <div class="tracking-page">
                 <div class="order-tracking">
-                    <a class="back-to-orders-link link-primary" href="orders.html">
+                    <Link class="back-to-orders-link link-primary" to="/orders">
                         View all orders
-                    </a>
+                    </Link>
 
                     <div class="delivery-date">
                         Arriving on Monday, June 13
