@@ -1,15 +1,33 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Header } from '../components/Header';
 import './HomePage.css';
 import CheckmarkIcon from '../assets/images/icons/checkmark.png';
-import { products } from '../../../eco-project/data/products';
+//import { products } from '../../../eco-project/data/products';
 export function HomePage() {
+    
+    const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
+
+    useEffect(()=>{
+        axios.get('/api/products')
+        .then((response) => {
+            setProducts(response.data)
+        });
+
+        axios.get('/api/cart-items')
+        .then((response)=>{
+            setCart(response.data);
+        });
+    },[]);
+
     return (
         <>
 
             <title>Ecommerce Project</title>
             <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
 
-            <Header />
+            <Header cart={cart}/>
 
             <div className="home-page">
                 <div className="products-grid">
@@ -29,7 +47,7 @@ export function HomePage() {
 
                                     <div className="product-rating-container">
                                         <img className="product-rating-stars"
-                                            src={`images/ratings/rating-${product.rating.stars*10}.png`} />
+                                            src={`images/ratings/rating-${product.rating.stars * 10}.png`} />
                                         <div className="product-rating-count link-primary">
                                             {product.rating.count}
                                         </div>
