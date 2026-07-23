@@ -1,11 +1,30 @@
 import { Header } from "../components/Header";
 import { Link, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import dayjs from "dayjs";
 import './TrackingPage.css';
 
 export function Tracking({cart}) {
     const {orderId, productId} = useParams();
-    console.log(orderId);
-    console.log(productId);
+    const [order, setOrder] = useState(null);
+
+    useEffect(()=>{
+        const fetchTrackingData = async ()=>{
+            const response = await axios.get(`/api/orders/${orderId}?expande=products`);
+            setOrder(response.data);
+        }
+        fetchTrackingData();
+    },[orderId]);
+
+    if(!order){
+        return null;
+    }
+
+    const orderProduct = order.products.find((orderProduct)=>{
+        
+    })
+
     return (
         <>
                 <title>Tracking</title>
