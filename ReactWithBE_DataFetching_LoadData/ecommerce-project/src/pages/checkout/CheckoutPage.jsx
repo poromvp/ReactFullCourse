@@ -12,11 +12,12 @@ export function CheckoutPage({ cart, loadCart }) {
         const fetchCheckoutData = async () => {
             let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
             setDeliveryOptions(response.data);
-            response = await axios.get('/api/payment-summary');
+
+            response = await axios.get('/api/payment-summary'); //nhớ phải tách ra useEffect khác để không gọi lãng phí api
             setPaymentSummarry(response.data);
         };
         fetchCheckoutData();
-    }, []);
+    }, [cart]);
 
     return (
         <>

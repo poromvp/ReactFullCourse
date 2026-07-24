@@ -19,7 +19,7 @@ export function DeliveryOptions({ deliveryOptions, cartItem, loadCart }) {
                         deliveryOptionId: deliveryOption.id
                     });
                     await loadCart();
-                }
+                };
 
                 return (
                     <div key={deliveryOption.id} className="delivery-option"
